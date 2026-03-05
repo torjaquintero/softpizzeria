@@ -31,3 +31,16 @@ Este ejercicio introduce el concepto de **funciones en Python** para mejorar la 
 El flujo del programa comienza solicitando el nombre de usuario. Si el usuario coincide con el almacenado, el sistema procede a validar la contraseña mediante un **bucle `while` que permite hasta tres intentos**, utilizando condicionales para verificar si la clave ingresada es correcta. Si la contraseña coincide, el acceso es concedido; de lo contrario, el contador de intentos aumenta hasta alcanzar el límite permitido.
 
 Si el usuario ingresado no coincide con el registrado, el programa informa que el usuario no existe y llama a la función `registrarUsuario()` para crear nuevas credenciales. De esta forma, el ejercicio muestra cómo **estructurar programas más grandes utilizando funciones**, mantener el código más organizado y facilitar la reutilización de bloques de lógica dentro de una aplicación interactiva.
+
+# Ejercicio No. 8
+
+Este ejercicio introduce el manejo de **errores y validación de datos** para hacer el software más robusto y evitar que el programa se detenga cuando el usuario ingresa información incorrecta.
+
+En primer lugar, se utiliza la estructura **`try` y `except`**, que permite capturar errores que ocurren durante la ejecución del programa. En este caso, cuando el sistema espera un número entero para la clave, se intenta convertir la entrada del usuario usando `int()`. Si el usuario escribe algo que no es un número, Python genera un error `ValueError`. Gracias al bloque `except`, el programa captura ese error y muestra un mensaje indicando que debe ingresarse un número entero, evitando que el programa se cierre inesperadamente.
+
+El ejercicio también incorpora **validación de datos** para mejorar la seguridad del sistema. El nombre de usuario puede ser cualquier texto, pero la clave debe ser un **número entero de cuatro dígitos**. Para garantizarlo, se verifica que el número esté dentro del rango entre 1000 y 9999. Si el valor ingresado no cumple esta condición, el sistema muestra un mensaje de error y vuelve a solicitar la clave.
+
+En el flujo del programa, primero se intenta iniciar sesión solicitando el usuario. Si el usuario coincide con el almacenado, se procede a validar la clave con un máximo de **tres intentos**, utilizando un bucle `while`. Si el usuario no existe, el programa pregunta si desea registrarse. En caso afirmativo, se llama a la función `registrarUsuario()` para crear un nuevo usuario y una nueva clave con las mismas reglas de validación.
+
+Este ejercicio muestra cómo combinar **funciones, bucles, condicionales, manejo de excepciones y validación de datos** para construir programas interactivos más confiables, acercándose cada vez más a la lógica que tendría un sistema real de software.
+
