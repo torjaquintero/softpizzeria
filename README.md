@@ -57,3 +57,39 @@ La función `registrarUsuario()` se encarga de solicitar al usuario toda la info
 En el programa principal se verifica primero si la base de usuarios está vacía. Si no existen registros, el sistema obliga a crear el **primer usuario del sistema**, garantizando que la base de datos inicial tenga al menos un registro. Ese usuario se almacena en `baseUsuarios` utilizando su nombre de usuario como clave.
 
 Finalmente, el programa recorre el diccionario completo usando `for clave, valor in baseUsuarios.items()`, lo que permite mostrar todos los usuarios registrados y la información asociada a cada uno. Este ejercicio introduce un concepto esencial en el desarrollo de software: **la gestión estructurada de datos**, que es la base para construir sistemas más complejos como bases de datos, sistemas de autenticación y aplicaciones empresariales.
+
+# Ejercicio No. 101
+
+Este ejercicio introduce el concepto de **persistencia de datos en archivos**, permitiendo que la información de los usuarios no se pierda cuando el programa termina su ejecución. En lugar de almacenar los datos únicamente en memoria mediante diccionarios, el sistema ahora guarda y recupera la información desde un archivo en el disco utilizando el formato **CSV (Comma Separated Values)**.
+
+Un archivo CSV es un archivo de texto donde cada línea representa un registro y los campos se separan mediante comas. Este formato es ampliamente utilizado para almacenar datos estructurados porque es simple, legible y compatible con múltiples herramientas, como hojas de cálculo y bases de datos. Para facilitar su manejo, Python proporciona el **módulo `csv`**, que permite leer y escribir este tipo de archivos de manera organizada.
+
+El programa utiliza varias funciones para estructurar el sistema:
+
+* **`cargarUsuarios()`**
+  Esta función intenta leer el archivo `baseUsuarios.csv`. Utiliza `csv.DictReader` para convertir cada fila del archivo en un diccionario. Cada usuario se almacena dentro del diccionario `usuarios`, utilizando el `nombre_usuario` como clave. Además, se convierten algunos campos como `clave` e `id` a valores enteros para mantener consistencia en los tipos de datos. Si el archivo no existe, se captura la excepción `FileNotFoundError` y se informa que el archivo será creado cuando se registre el primer usuario.
+
+* **`guardarUsuarios()`**
+  Esta función escribe todos los usuarios en el archivo CSV utilizando `csv.DictWriter`. Primero se escriben los nombres de las columnas mediante `writeheader()`, y luego cada usuario se guarda como una fila del archivo. De esta forma, cualquier cambio en la base de usuarios queda almacenado permanentemente.
+
+* **`registrarUsuario()`**
+  Permite crear un nuevo usuario solicitando los datos principales del sistema: nombre de usuario, clave de cuatro dígitos, nombre completo, número de identificación, correo electrónico y celular. La clave debe confirmarse dos veces y cumplir con la condición de tener exactamente cuatro dígitos numéricos. Este proceso incluye validaciones mediante `try/except` para evitar errores cuando el usuario ingresa datos inválidos.
+
+* **`login()`**
+  Implementa el sistema de autenticación. El usuario ingresa su nombre de usuario y, si existe en la base de datos, debe introducir la clave correcta con un máximo de tres intentos. Si el usuario no existe, el sistema ofrece la posibilidad de registrarlo inmediatamente y guardar sus datos en el archivo CSV.
+
+* **`menuPrincipal()`**
+  Una vez autenticado, el usuario accede a un menú interactivo que representa los módulos principales del software de la pizzería: gestión de pedidos, clientes, empleados e inventario. El menú se ejecuta dentro de un bucle `while`, permitiendo seleccionar diferentes opciones hasta que el usuario decide salir del sistema.
+
+En el **programa principal**, primero se cargan los usuarios desde el archivo CSV, luego se ejecuta el proceso de autenticación y, si el inicio de sesión es exitoso, se muestra el menú principal.
+
+Este ejercicio introduce varios conceptos fundamentales en el desarrollo de software:
+
+* Uso de **diccionarios para modelar datos estructurados**.
+* Manejo de **archivos CSV para almacenar información persistente**.
+* Implementación de **login y registro de usuarios**.
+* Uso de **funciones para modularizar el programa**.
+* Aplicación de **manejo de errores con `try/except`**.
+* Construcción de **interfaces interactivas mediante bucles y menús**.
+
+En conjunto, estos elementos constituyen la base para desarrollar aplicaciones más completas, donde los datos del sistema se conservan entre ejecuciones y el usuario puede interactuar con diferentes módulos del software.
