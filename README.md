@@ -44,3 +44,16 @@ En el flujo del programa, primero se intenta iniciar sesión solicitando el usua
 
 Este ejercicio muestra cómo combinar **funciones, bucles, condicionales, manejo de excepciones y validación de datos** para construir programas interactivos más confiables, acercándose cada vez más a la lógica que tendría un sistema real de software.
 
+# Ejercicio No. 9
+
+Este ejercicio introduce el uso de **diccionarios en Python**, una estructura de datos fundamental para representar información organizada mediante pares **clave–valor**. A diferencia de las listas o tuplas, los diccionarios permiten acceder a los datos mediante una clave específica, lo que facilita estructurar información compleja, como los datos de un usuario dentro de un sistema.
+
+En el primer ejemplo se muestra un diccionario simple llamado `usuario`, donde cada campo del usuario —como `nombre_usuario`, `clave`, `nombre`, `id`, `correo` y `celular`— se almacena como un par clave–valor. Esto permite acceder fácilmente a cualquier dato del usuario utilizando su clave correspondiente, por ejemplo `usuario["nombre"]`.
+
+Posteriormente, el ejercicio presenta una estructura más completa para manejar múltiples usuarios mediante un diccionario llamado `baseUsuarios`. En este caso, el diccionario principal funciona como una **base de datos en memoria**, donde cada clave corresponde al `nombre_usuario` y su valor asociado es otro diccionario que contiene todos los datos de ese usuario. Este enfoque permite organizar múltiples registros de manera estructurada.
+
+La función `registrarUsuario()` se encarga de solicitar al usuario toda la información necesaria para crear un nuevo registro: nombre de usuario, clave de cuatro dígitos, nombre completo, número de identificación, correo electrónico y número de celular. Durante este proceso se aplican validaciones, por ejemplo asegurando que la clave tenga exactamente cuatro dígitos y que el número de identificación sea un valor entero. Finalmente, la función construye y devuelve un diccionario con todos los datos del usuario.
+
+En el programa principal se verifica primero si la base de usuarios está vacía. Si no existen registros, el sistema obliga a crear el **primer usuario del sistema**, garantizando que la base de datos inicial tenga al menos un registro. Ese usuario se almacena en `baseUsuarios` utilizando su nombre de usuario como clave.
+
+Finalmente, el programa recorre el diccionario completo usando `for clave, valor in baseUsuarios.items()`, lo que permite mostrar todos los usuarios registrados y la información asociada a cada uno. Este ejercicio introduce un concepto esencial en el desarrollo de software: **la gestión estructurada de datos**, que es la base para construir sistemas más complejos como bases de datos, sistemas de autenticación y aplicaciones empresariales.
